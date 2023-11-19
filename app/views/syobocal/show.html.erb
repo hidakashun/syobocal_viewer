@@ -1,0 +1,24 @@
+<h1><%= @title %></h1>
+
+<p>ショートタイトル : <%= @short_title %></p>
+
+<p>タイトル読み : <%= @title_yomi %></p>
+
+<p>タイトル英語 : <%= @title_en %></p>
+
+<p>
+  <ul>
+    <% @comment.split("\n").each do |line| %>
+      <% next if line.blank? || line.start_with?('*') %>
+      <% url_match = line.match(/(http:\/\/\S+)/) %>
+      <% if url_match %>
+        <% url = url_match[1].gsub(/\]/, '') %>
+        <li><%= link_to url, url %></li>
+      <% else %>
+        <li><%= line.gsub(/-/, '').gsub(/:/, '').strip %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Back', root_path %>

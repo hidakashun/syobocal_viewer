@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'syobocal/index'
   root 'syobocal#index'
+  get '/syobocal/show/:tid', to: 'syobocal#show', as: 'syobocal_show'
 end

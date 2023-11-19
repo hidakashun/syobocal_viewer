@@ -1,3 +1,9 @@
 <h1>Syobocal Viewer</h1>
 
-<pre><%= PP.pp(@result, '').html_safe %></pre>
+<% @result.each do |title_info| %>
+  <div class="title-info" data-tid="<%= title_info[:tid] %>">
+    <h2>
+      <%= link_to title_info[:title], syobocal_show_path(tid: title_info[:tid]) %>
+    </h2>
+  </div>
+<% end %>
